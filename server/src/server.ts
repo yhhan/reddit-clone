@@ -16,7 +16,7 @@ app.listen(port, async () => {
 
   AppDataSource.initialize()
     .then(async () => {
-        console.log("Here you can setup and run express / fastify / any other framework.");
+        console.log("DataSource initialized.");
     })
     .catch((error) => console.log(error));
 });
