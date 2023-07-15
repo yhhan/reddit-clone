@@ -6,9 +6,11 @@ import {
   Index,
   OneToMany,
   BeforeInsert,
-  BaseEntity,
-} from "typeorm";
+  } from "typeorm";
 import bcrypt from "bcryptjs";
+import BaseEntity from './Entity'
+import Post from "./Post";
+import Vote from "./Vote";
 
 @Entity("users")
 export class User extends BaseEntity {
@@ -20,7 +22,7 @@ export class User extends BaseEntity {
 
   @Index()
   @Length(2, 32, { message: "사용자 이름은 2자 이상이어야 합니다." })
-  @Column()
+  @Column({unique: true})
   username: string;
 
   @Length(6, 255, { message: "비밀번호는 6자리 이상이어야 합니다." })
